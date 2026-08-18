@@ -24,6 +24,7 @@ export interface TidewaveMetaConfig {
   tidewave: TidewaveConfigPayload;
   root: string;
   wsl_distro: string | null;
+  host_path: string | null;
   framework: Record<string, string>;
 }
 
@@ -62,6 +63,7 @@ export function tidewaveConfigMeta<Request = unknown>(
     tidewave: tidewaveConfig(config, getLocalRequestInfo, request),
     root: process.cwd(),
     wsl_distro: process.env['WSL_DISTRO_NAME'] ?? null,
+    host_path: process.env['TIDEWAVE_HOST_PATH'] ?? null,
     framework: {},
   };
 }
