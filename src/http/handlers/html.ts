@@ -54,7 +54,7 @@ function createHtmlHandler(
       if (!res.headersSent) {
         res.statusCode = 500;
         res.setHeader('Content-Type', 'text/html');
-        res.end('<html><body>Internal server error</body></html>');
+        res.end('<!DOCTYPE html><html><body>Internal server error</body></html>');
       }
 
       next(err);
@@ -66,6 +66,7 @@ function entrypointHtml(config: TidewaveConfig): string {
   const clientUrl = config.clientUrl || 'https://tidewave.ai';
 
   return `
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -85,6 +86,7 @@ function controlHtml(
   const clientUrl = config.clientUrl || 'https://tidewave.ai';
 
   return `
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
